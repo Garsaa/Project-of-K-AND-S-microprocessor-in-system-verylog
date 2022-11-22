@@ -178,9 +178,17 @@ end
 
 
 
+//mux do addr_sel
+always_comb begin: mux_addr_sel
+   if(addr_sel)
+   ram_addr = mem_addr;      
+  else
+   ram_addr = program_counter;
+end
+
+
+
 //falta o banco de registradores
-
-
 //falta salvar as flags
 
 
