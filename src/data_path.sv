@@ -168,11 +168,16 @@ always_comb begin : decoder
         end
     endcase
 end
+
+
 //mux do c_bus
 always_comb begin : mux_bus_c
     if(c_sel) bus_c = alu_out;
     else bus_c = data_in;
 end
+
+
+
 //falta o banco de registradores
 
 
