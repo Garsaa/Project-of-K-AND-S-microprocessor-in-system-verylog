@@ -70,8 +70,8 @@ always_comb begin : calc_next_state
                 end
 
              I_LOAD: begin
-             write_reg_enable = 1;
-          
+             write_reg_enable = 1'b1;
+             
              
              
                 end

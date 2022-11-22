@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="592110000fs"></ZoomStartTime>
-      <ZoomEndTime time="691110001fs"></ZoomEndTime>
-      <Cursor1Time time="603710000fs"></Cursor1Time>
+      <ZoomStartTime time="402766667fs"></ZoomStartTime>
+      <ZoomEndTime time="476166668fs"></ZoomEndTime>
+      <Cursor1Time time="415000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="103"></NameColumnWidth>
-      <ValueColumnWidth column_width="102"></ValueColumnWidth>
+      <NameColumnWidth column_width="59"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="34" />
+   <WVObjectSize size="39" />
    <wvobject fp_name="/tb_k_and_s/rst_n" type="logic">
       <obj_property name="ElementShortName">rst_n</obj_property>
       <obj_property name="ObjectShortName">rst_n</obj_property>
@@ -92,6 +92,10 @@
       <obj_property name="ElementShortName">write_enable</obj_property>
       <obj_property name="ObjectShortName">write_enable</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/zero_op_s" type="logic">
+      <obj_property name="ElementShortName">zero_op_s</obj_property>
+      <obj_property name="ObjectShortName">zero_op_s</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_k_and_s/uut/data_in" type="array">
       <obj_property name="ElementShortName">data_in[15:0]</obj_property>
       <obj_property name="ObjectShortName">data_in[15:0]</obj_property>
@@ -126,6 +130,18 @@
       <obj_property name="ElementShortName">flags_reg_enable_s</obj_property>
       <obj_property name="ObjectShortName">flags_reg_enable_s</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/signed_overflow_s" type="logic">
+      <obj_property name="ElementShortName">signed_overflow_s</obj_property>
+      <obj_property name="ObjectShortName">signed_overflow_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/unsigned_overflow_s" type="logic">
+      <obj_property name="ElementShortName">unsigned_overflow_s</obj_property>
+      <obj_property name="ObjectShortName">unsigned_overflow_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/neg_op_s" type="logic">
+      <obj_property name="ElementShortName">neg_op_s</obj_property>
+      <obj_property name="ObjectShortName">neg_op_s</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_k_and_s/uut/decoded_instruction_s" type="array">
       <obj_property name="ElementShortName">decoded_instruction_s[4:0]</obj_property>
       <obj_property name="ObjectShortName">decoded_instruction_s[4:0]</obj_property>
@@ -134,21 +150,13 @@
       <obj_property name="ElementShortName">operation_s[1:0]</obj_property>
       <obj_property name="ObjectShortName">operation_s[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_k_and_s/uut/zero_op_s" type="logic">
-      <obj_property name="ElementShortName">zero_op_s</obj_property>
-      <obj_property name="ObjectShortName">zero_op_s</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_k_and_s/uut/neg_op_s" type="logic">
-      <obj_property name="ElementShortName">neg_op_s</obj_property>
-      <obj_property name="ObjectShortName">neg_op_s</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_k_and_s/uut/unsigned_overflow_s" type="logic">
-      <obj_property name="ElementShortName">unsigned_overflow_s</obj_property>
-      <obj_property name="ObjectShortName">unsigned_overflow_s</obj_property>
-   </wvobject>
    <wvobject type="divider" fp_name="divider32">
       <obj_property name="label">testingSignals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/program_counter" type="array">
+      <obj_property name="ElementShortName">program_counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">program_counter[4:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_k_and_s/uut/datapath_i/instruction" type="array">
       <obj_property name="ElementShortName">instruction[15:0]</obj_property>
@@ -162,8 +170,20 @@
       <obj_property name="ElementShortName">next_state[31:0]</obj_property>
       <obj_property name="ObjectShortName">next_state[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_k_and_s/uut/signed_overflow_s" type="logic">
-      <obj_property name="ElementShortName">signed_overflow_s</obj_property>
-      <obj_property name="ObjectShortName">signed_overflow_s</obj_property>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/R0" type="array">
+      <obj_property name="ElementShortName">R0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">R0[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/R1" type="array">
+      <obj_property name="ElementShortName">R1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">R1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/R2" type="array">
+      <obj_property name="ElementShortName">R2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">R2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/R3" type="array">
+      <obj_property name="ElementShortName">R3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">R3[15:0]</obj_property>
    </wvobject>
 </wave_config>
