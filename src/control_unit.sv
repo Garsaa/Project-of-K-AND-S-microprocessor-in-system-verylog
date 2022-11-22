@@ -23,6 +23,7 @@ import k_and_s_pkg::*;
 
 typedef enum{
     BUSCA_INSTR,
+    REG_INSTR,    
     LOAD_1,
     LOAD_2,
     ESCREVE_REG,
@@ -52,6 +53,9 @@ always_comb begin : calc_next_state
     halt  = 1'b0;
     case(state)
         BUSCA_INSTR : begin
+            next_state = REG_INSTR;
+        end
+        REG_INSTR : begin
             next_state = DECODIFICA;
             ir_enable = 1'b1;
             pc_enable = 1'b1;
