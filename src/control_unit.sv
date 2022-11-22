@@ -21,20 +21,69 @@ import k_and_s_pkg::*;
     output logic                    halt
 );
 
-// remove from here
-// signal added to test environment..
-logic [7:0] counter = 'd0;
+typedef enum{
+    BUSCA_INSTR,
+    LOAD_1,
+    LOAD_2,
+    ESCREVE_REG,
+    FIM_PROGRAMA,
+    DECODIFICA
+} state_t;
+state_t state;
+state_t next_state;
 
-//process to test environment ... remove this
-always @(posedge clk or negedge rst_n) begin
-    if (~rst_n)
-        counter <= 'd0;
+always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        state <= BUSCA_INSTR;
     else
-        counter <= counter + 1;
+        state = next_state;
 end
 
-assign halt = ( (&(counter)) ? 1'b1 : 1'b0);
-//until here !!!!
-
+always_comb begin : calc_next_state
+    branch = 1'b0; // valores default
+    pc_enable = 1'b0;
+    ir_enable = 1'b0;
+    write_reg_enable = 1'b0;
+    addr_sel = 1'b0;
+    c_sel = 1'b0;
+    operation = 2'b0;
+    flags_reg_enable = 1'b0;
+    ram_write_enable = 1'b0;
+    halt  = 1'b0;
+    case(state)
+        BUSCA_INSTR : begin
+            next_state = DECODIFICA;
+            ir_enable = 1'b1;
+            pc_enable = 1'b1;
+        end
+        DECODIFICA: begin
+            next_state = BUSCA_INSTR;
+            case(decoded_instruction)
+                I_HALT: next_state = FIM_PROGRAMA;
+                I_LOAD: begin
+                    next_state = LOAD_1;
+                    addr_sel = 1'b1;
+                end
+                //INSERIR AS CONDIÇÕES DE ENTRADA DA MÁQUINA
+                default: next_state = FIM_PROGRAMA;
+            endcase
+        end
+        LOAD_1 : begin // inicia a leitura da memória
+            next_state = LOAD_2;
+            addr_sel = 1;
+            c_sel = 1'b1;
+        end
+        LOAD_2 : begin // inicia a leitura da memória
+            next_state = BUSCA_INSTR;
+            addr_sel = 1;
+            c_sel = 1'b1;
+            write_reg_enable = 1'b1;
+        end
+        FIM_PROGRAMA : begin
+            next_state = FIM_PROGRAMA;
+            halt = 1'b1;
+        end
+    endcase
+end
 
 endmodule : control_unit

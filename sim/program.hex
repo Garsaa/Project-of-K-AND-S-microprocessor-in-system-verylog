@@ -1,27 +1,9 @@
 ;  Programa de Teste 1
-;  Autor Joao Leonardo Fragoso
-000C
-FFF1
+;  Maikon Michel; Gabriel Garsa
 0000
-814F
-826E
-9106
-030A
-010B
-0201
-0200
-911B
-9118
-9100
-9100
-0000
-0000
+815D
 0000
 FFFF
-FFFF
-0000
-0001
-0002
 0000
 0000
 0000
@@ -29,8 +11,26 @@ FFFF
 0000
 0000
 0000
-FFFF
-FFFF
-FFFF
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+1234
+0000
+0000
 ; end of file
 ; end of file

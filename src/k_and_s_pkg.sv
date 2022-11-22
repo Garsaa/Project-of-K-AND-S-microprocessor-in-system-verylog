@@ -13,6 +13,8 @@ package k_and_s_pkg;
     I_BNZERO,
     I_BNEG,
     I_BNNEG,
+    I_BOV,
+    I_BNOV,
     I_HALT
 } decoded_instruction_type;  // Decoded instruction in decode
 
