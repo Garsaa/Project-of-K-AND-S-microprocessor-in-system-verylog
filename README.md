@@ -1,4 +1,4 @@
-## Knob and Switch Simulador em VHDL
+## Knob and Switch Simulador em SYSTEM VERILOG
 
 Este é um repositório mantido como o projeto inicial para configurar o Xilinx Vivado para o desenvolvimento
 do projeto do simulador do K&S em VHDL.
