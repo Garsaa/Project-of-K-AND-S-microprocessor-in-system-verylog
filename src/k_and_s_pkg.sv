@@ -1,6 +1,6 @@
 package k_and_s_pkg;
   typedef enum  logic [4:0] {
-    I_NOP,
+    I_NOP,//ok
     I_LOAD,
     I_STORE,
     I_MOVE,
@@ -15,7 +15,7 @@ package k_and_s_pkg;
     I_BNNEG,
     I_BOV,
     I_BNOV,
-    I_HALT
+    I_HALT//ok
 } decoded_instruction_type;  // Decoded instruction in decode
 
 endpackage : k_and_s_pkg

@@ -23,7 +23,9 @@ import k_and_s_pkg::*;
 
 typedef enum{
     BUSCA_INSTR,
-    REG_INSTR
+    REG_INSTR,
+    DECODIFICAR,
+    FIM_PROGRAMA
 } state_t;
 
 state_t state;
@@ -36,7 +38,7 @@ always_ff @(posedge clk or negedge rst_n) begin
         state = next_state;
 end
 
-always_comb begin : calc_next_state
+always_comb begin : calc_next_state 
     branch = 1'b0; // valores default
     pc_enable = 1'b0;
     ir_enable = 1'b0;
@@ -54,7 +56,30 @@ always_comb begin : calc_next_state
         REG_INSTR: begin
             ir_enable = 1'b1;
             pc_enable = 1'b1;
+            
+           next_state = DECODIFICAR;
         end
+        
+        DECODIFICAR: begin
+             next_state = BUSCA_INSTR;
+             
+             case(decoded_instruction)
+             
+             I_HALT : begin          
+                next_state = FIM_PROGRAMA;
+                end
+
+
+
+             endcase
+        end
+        
+        FIM_PROGRAMA : begin
+            halt = 1'b1;
+        end
+        
+        
+        
     endcase
 end
 
