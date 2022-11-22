@@ -25,6 +25,7 @@ typedef enum{
     BUSCA_INSTR,
     REG_INSTR,
     DECODIFICAR,
+    LOAD_BUSCA_RAM,
     FIM_PROGRAMA
 } state_t;
 
@@ -59,23 +60,22 @@ always_comb begin : calc_next_state
             
            next_state = DECODIFICAR;
         end
-        
+        LOAD_BUSCA_RAM : begin
+            ir_enable = 1'b0;
+            c_sel = 0'b0;
+            write_reg_enable = 1'b1;
+        end
         DECODIFICAR: begin
-             next_state = BUSCA_INSTR;
-             
-            case(decoded_instruction)
-             
-             I_HALT : begin          
-                next_state = FIM_PROGRAMA;
+            next_state = BUSCA_INSTR;
+            case(decoded_instruction)        
+                I_HALT : begin          
+                    next_state = FIM_PROGRAMA;
                 end
-
-             I_LOAD: begin
-             write_reg_enable = 1'b1;
-             
-             
-             
-                end
-
+                I_LOAD: begin
+                    write_reg_enable = 1'b1;
+                    addr_sel = 1'b1;
+                    next_state = LOAD_BUSCA_RAM;
+                 end
              endcase
         end
         
