@@ -19,9 +19,12 @@ import k_and_s_pkg::*;
     output logic              [4:0] ram_addr,
     output logic             [15:0] data_out,
     input  logic             [15:0] data_in
-
+    
 );
-
+logic [15:0] R0;
+logic [15:0] R1;
+logic [15:0] R2;
+logic [15:0] R3;
 logic [4:0] mem_addr;
 logic [4:0] program_counter;
 logic [15:0] bus_a;
@@ -180,15 +183,58 @@ end
 
 //mux do addr_sel
 always_comb begin: mux_addr_sel
-   if(addr_sel)
-   ram_addr = mem_addr;      
+  if(addr_sel)
+     ram_addr = mem_addr;      
   else
-   ram_addr = program_counter;
+     ram_addr = program_counter;
 end
 
 
 
-//falta o banco de registradores
+//banco de registradores
+always_ff @(posedge clk) begin : register_bank
+   
+   if(write_reg_enable) begin
+       case(c_addr)
+         2'b00:
+            R0 = bus_c;  
+         2'b01:
+            R1 = bus_c;  
+         2'b10:
+            R2 = bus_c;
+         2'b11:
+            R3 = bus_c;
+    endcase
+  end
+    case(a_addr)
+        2'b00:
+            bus_a = R0;  
+         2'b01:
+            bus_a = R1;  
+         2'b10:
+            bus_a = R2;
+         2'b11:
+            bus_a = R3;
+        endcase
+        
+    case(b_addr)
+         2'b00:
+            bus_b = R0;  
+         2'b01:
+            bus_b = R1;  
+         2'b10:
+            bus_b = R2;
+         2'b11:
+            bus_b = R3;  
+     endcase
+   
+  
+   
+end
+
+
+
+
 //falta salvar as flags
 
 
