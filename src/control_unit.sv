@@ -63,13 +63,18 @@ always_comb begin : calc_next_state
         DECODIFICAR: begin
              next_state = BUSCA_INSTR;
              
-             case(decoded_instruction)
+            case(decoded_instruction)
              
              I_HALT : begin          
                 next_state = FIM_PROGRAMA;
                 end
 
-
+             I_LOAD: begin
+             write_reg_enable = 1;
+          
+             
+             
+                end
 
              endcase
         end
