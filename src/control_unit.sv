@@ -62,8 +62,9 @@ always_comb begin : calc_next_state
         end
         LOAD_BUSCA_RAM : begin
             ir_enable = 1'b0;
-            c_sel = 0'b0;
+            c_sel = 'b0;
             write_reg_enable = 1'b1;
+           next_state = BUSCA_INSTR;
         end
         DECODIFICAR: begin
             next_state = BUSCA_INSTR;
@@ -71,8 +72,7 @@ always_comb begin : calc_next_state
                 I_HALT : begin          
                     next_state = FIM_PROGRAMA;
                 end
-                I_LOAD: begin
-                    write_reg_enable = 1'b1;
+                I_LOAD: begin              
                     addr_sel = 1'b1;
                     next_state = LOAD_BUSCA_RAM;
                  end
