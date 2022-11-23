@@ -27,6 +27,7 @@ typedef enum{
     DECODIFICAR,
     LOAD_BUSCA_RAM,
     STORE_ESCREVE_RAM,
+    ESCREVE_REGISTER,
     FIM_PROGRAMA
 } state_t;
 
@@ -73,14 +74,20 @@ always_comb begin : calc_next_state
             ram_write_enable = 1'b1;
             ir_enable = 1'b0;
             next_state = BUSCA_INSTR;                  
-        end
+         end
+        
+        ESCREVE_REGISTER : begin
+            write_reg_enable = 1'b1;
+            c_sel = 1'b1;
+            next_state = BUSCA_INSTR;
+         end
         
         DECODIFICAR: begin
             next_state = BUSCA_INSTR;
             case(decoded_instruction)        
                 I_HALT : begin          
                     next_state = FIM_PROGRAMA;
-                end
+                 end
                 I_LOAD: begin              
                     addr_sel = 1'b1;
                     next_state = LOAD_BUSCA_RAM;
@@ -88,7 +95,33 @@ always_comb begin : calc_next_state
                 I_STORE: begin
                     addr_sel = 1'b1;
                     next_state = STORE_ESCREVE_RAM;
-                end
+                 end
+                 I_ADD: begin
+                    operation = 2'b01;
+                    c_sel = 1'b1;
+                    next_state = ESCREVE_REGISTER;
+                 end
+                 I_SUB: begin
+                    operation = 2'b10;
+                    c_sel = 1'b1;
+                    next_state = ESCREVE_REGISTER;
+                 end
+                  I_AND: begin
+                    operation = 2'b11;
+                    c_sel = 1'b1;
+                    next_state = ESCREVE_REGISTER;
+                 end
+                   I_OR: begin
+                    operation = 2'b00;
+                    c_sel = 1'b1;
+                    next_state = ESCREVE_REGISTER;
+                 end
+                   I_MOVE: begin //verificar
+                    operation = 2'b00;
+                    c_sel = 1'b1;
+                    next_state = ESCREVE_REGISTER;
+                 end
+                
              endcase
         end
         

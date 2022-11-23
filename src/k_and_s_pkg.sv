@@ -1,8 +1,8 @@
 package k_and_s_pkg;
   typedef enum  logic [4:0] {
     I_NOP,//ok
-    I_LOAD,
-    I_STORE,
+    I_LOAD,//ok
+    I_STORE,//ok
     I_MOVE,
     I_ADD,
     I_SUB,
