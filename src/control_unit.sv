@@ -13,12 +13,12 @@ import k_and_s_pkg::*;
     output logic              [1:0] operation,
     output logic                    flags_reg_enable,
     input  decoded_instruction_type decoded_instruction,
-    input  logic                    zero_op,
-    input  logic                    neg_op,
-    input  logic                    unsigned_overflow,
-    input  logic                    signed_overflow,
     output logic                    ram_write_enable,
-    output logic                    halt
+    output logic                    halt,
+    input logic                     reg_zero,
+    input logic                     reg_neg,
+    input logic                     reg_ov,
+    input logic                     reg_sov
 );
 
 typedef enum{
@@ -133,7 +133,33 @@ always_comb begin : calc_next_state
                         branch = 1'b1;
                         pc_enable = 1'b1;
                         next_state = BUSCA_INSTR;
+                        
+                 end
+                    I_BZERO: begin
+                       if(reg_zero) begin
+                            branch = 1'b1;
+                            pc_enable = 1'b1;
+                        end
+                        next_state = BUSCA_INSTR;
                    end
+                   
+                   I_BNEG: begin
+                       if(reg_neg) begin
+                            branch = 1'b1;
+                            pc_enable = 1'b1;
+                        end
+                        next_state = BUSCA_INSTR;
+                   end
+                   
+                   I_BZERO: begin
+                       if(reg_zero) begin
+                            branch = 1'b1;
+                            pc_enable = 1'b1;
+                        end
+                        next_state = BUSCA_INSTR;
+                   end
+                   
+                   
                 
              endcase
         end

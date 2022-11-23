@@ -19,10 +19,10 @@ import k_and_s_pkg::*;
   decoded_instruction_type decoded_instruction_s;
   logic                    write_reg_enable_s;
   logic              [1:0] operation_s;
-  logic                    zero_op_s;
-  logic                    neg_op_s;
-  logic                    unsigned_overflow_s;
-  logic                    signed_overflow_s;
+  logic                     reg_zero; 
+  logic                     reg_neg;
+  logic                     reg_ov;
+  logic                     reg_sov;
 
 data_path datapath_i
 (
@@ -37,13 +37,13 @@ data_path datapath_i
     .write_reg_enable(write_reg_enable_s),
     .flags_reg_enable(flags_reg_enable_s),
     .decoded_instruction(decoded_instruction_s),
-    .zero_op(zero_op_s),
-    .neg_op(neg_op_s),
-    .unsigned_overflow(unsigned_overflow_s),
-    .signed_overflow(signed_overflow_s),
     .ram_addr(addr),
     .data_out(data_out),
-    .data_in(data_in)
+    .data_in(data_in),
+    .reg_zero(reg_zero),
+    .reg_neg(reg_neg),
+    .reg_ov(reg_ov),
+    .reg_sov(reg_sov)
 );
 
 control_unit control_unit_i
@@ -59,12 +59,12 @@ control_unit control_unit_i
     .operation(operation_s),
     .flags_reg_enable(flags_reg_enable_s),
     .decoded_instruction(decoded_instruction_s),
-    .zero_op(zero_op_s),
-    .neg_op(neg_op_s),
-    .unsigned_overflow(unsigned_overflow_s),
-    .signed_overflow(signed_overflow_s),
     .ram_write_enable(write_enable),
-    .halt(halt)
+    .halt(halt),
+    .reg_zero(reg_zero),
+    .reg_neg(reg_neg),
+    .reg_ov(reg_ov),
+    .reg_sov(reg_sov)
 );
 
 endmodule : k_and_s

@@ -8,7 +8,7 @@ package k_and_s_pkg;
     I_SUB,//ok
     I_AND,//ok
     I_OR,//ok
-    I_BRANCH,
+    I_BRANCH,//ok
     I_BZERO,
     I_BNZERO,
     I_BNEG,

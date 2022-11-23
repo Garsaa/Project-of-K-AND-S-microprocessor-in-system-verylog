@@ -12,13 +12,13 @@ import k_and_s_pkg::*;
     input  logic                    write_reg_enable,
     input  logic                    flags_reg_enable,
     output decoded_instruction_type decoded_instruction,
-    output logic                    zero_op,
-    output logic                    neg_op,
-    output logic                    unsigned_overflow,
-    output logic                    signed_overflow,
     output logic              [4:0] ram_addr,
     output logic             [15:0] data_out,
-    input  logic             [15:0] data_in
+    input  logic             [15:0] data_in,
+    output logic                     reg_zero,
+    output logic                     reg_neg,
+    output logic                     reg_ov,
+    output logic                     reg_sov
     
 );
 logic [15:0] R0;
@@ -39,10 +39,6 @@ logic zero_f;
 logic neg_f;
 logic ov_f;
 logic sov_f;
-logic reg_zero; // registradores das flags
-logic reg_neg;
-logic reg_ov;
-logic reg_sov;
 logic carry_in_ultimo_bit;
 logic [15:0] complemento_bus_b;
 
