@@ -76,6 +76,10 @@ always_comb begin : calc_next_state
                     addr_sel = 1'b1;
                     next_state = LOAD_BUSCA_RAM;
                  end
+                I_STORE: begin
+                    ram_write_enable = 1'b1;
+                    next_state = BUSCA_INSTR;
+                end
              endcase
         end
         

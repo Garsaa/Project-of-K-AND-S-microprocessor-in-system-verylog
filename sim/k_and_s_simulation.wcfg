@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="402766667fs"></ZoomStartTime>
-      <ZoomEndTime time="476166668fs"></ZoomEndTime>
-      <Cursor1Time time="415000000fs"></Cursor1Time>
+      <ZoomStartTime time="681666666fs"></ZoomStartTime>
+      <ZoomEndTime time="1063666667fs"></ZoomEndTime>
+      <Cursor1Time time="817667000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="59"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="39" />
+   <WVObjectSize size="40" />
    <wvobject fp_name="/tb_k_and_s/rst_n" type="logic">
       <obj_property name="ElementShortName">rst_n</obj_property>
       <obj_property name="ObjectShortName">rst_n</obj_property>
@@ -185,5 +185,9 @@
    <wvobject fp_name="/tb_k_and_s/uut/datapath_i/R3" type="array">
       <obj_property name="ElementShortName">R3[15:0]</obj_property>
       <obj_property name="ObjectShortName">R3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/ram/mem_data[7]" type="array">
+      <obj_property name="ElementShortName">[7][15:0]</obj_property>
+      <obj_property name="ObjectShortName">[7][15:0]</obj_property>
    </wvobject>
 </wave_config>

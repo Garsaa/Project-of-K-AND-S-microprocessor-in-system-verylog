@@ -232,7 +232,9 @@ always_ff @(posedge clk) begin : register_bank
    
 end
 
-
+  always_comb begin : liga_data_out
+     assign data_out = bus_a;
+  end
 
 
 //falta salvar as flags
