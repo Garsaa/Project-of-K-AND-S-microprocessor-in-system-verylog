@@ -40,7 +40,7 @@ logic neg_f;
 logic ov_f;
 logic sov_f;
 logic carry_in_ultimo_bit;
-logic [15:0] complemento_bus_b;
+logic [15:0] complemento_bus_a;
 
 always_ff @(posedge clk) begin : ir_ctrl
     if (ir_enable)
@@ -69,7 +69,7 @@ always_ff @(posedge clk) begin : banco_flags
 end
 
 always_comb begin : ula_ctrl
-   assign  complemento_bus_b = (~bus_b) + 1;
+   assign  complemento_bus_a = (~bus_a) + 1;
     case(operation)
         2'b01: begin // add
             {carry_in_ultimo_bit, alu_out[14:0]} = bus_a[14:0] + bus_b[14:0];
@@ -77,8 +77,8 @@ always_comb begin : ula_ctrl
             sov_f = ov_f ^carry_in_ultimo_bit;
         end
         2'b10: begin // sub
-            {carry_in_ultimo_bit, alu_out[14:0]} = bus_a[14:0] + complemento_bus_b[14:0];
-            {ov_f, alu_out[15]} = bus_a[15] + complemento_bus_b[15] + carry_in_ultimo_bit;
+            {carry_in_ultimo_bit, alu_out[14:0]} = bus_b[14:0] + complemento_bus_a[14:0];
+            {ov_f, alu_out[15]} = bus_b[15] + complemento_bus_a[15] + carry_in_ultimo_bit;
             sov_f = ov_f ^carry_in_ultimo_bit;        
         end
         2'b11: begin // and
