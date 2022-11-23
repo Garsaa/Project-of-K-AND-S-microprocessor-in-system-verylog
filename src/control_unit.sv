@@ -129,6 +129,11 @@ always_comb begin : calc_next_state
                     c_sel = 1'b1;
                     next_state = ESCREVE_REGISTER;
                  end
+                   I_BRANCH: begin
+                        branch = 1'b1;
+                        pc_enable = 1'b1;
+                        next_state = BUSCA_INSTR;
+                   end
                 
              endcase
         end
