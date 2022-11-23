@@ -77,6 +77,7 @@ always_comb begin : calc_next_state
          end
         
         ESCREVE_REGISTER : begin
+            flags_reg_enable = 1'b1;
             case(decoded_instruction)
                 I_ADD:  operation = 2'b01;
                 I_SUB:  operation = 2'b10;
@@ -135,9 +136,6 @@ always_comb begin : calc_next_state
         FIM_PROGRAMA : begin
             halt = 1'b1;
         end
-        
-        
-        
     endcase
 end
 

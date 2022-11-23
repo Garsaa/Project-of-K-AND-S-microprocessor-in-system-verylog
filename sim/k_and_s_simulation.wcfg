@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="484200000fs"></ZoomStartTime>
-      <ZoomEndTime time="489000001fs"></ZoomEndTime>
-      <Cursor1Time time="485000000fs"></Cursor1Time>
+      <ZoomStartTime time="505000000fs"></ZoomStartTime>
+      <ZoomEndTime time="553000001fs"></ZoomEndTime>
+      <Cursor1Time time="545000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="117"></NameColumnWidth>
-      <ValueColumnWidth column_width="87"></ValueColumnWidth>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="105"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="48" />
+   <WVObjectSize size="56" />
    <wvobject fp_name="/tb_k_and_s/rst_n" type="logic">
       <obj_property name="ElementShortName">rst_n</obj_property>
       <obj_property name="ObjectShortName">rst_n</obj_property>
@@ -221,5 +221,37 @@
    <wvobject fp_name="/tb_k_and_s/uut/operation_s" type="array">
       <obj_property name="ElementShortName">operation_s[1:0]</obj_property>
       <obj_property name="ObjectShortName">operation_s[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/zero_f" type="logic">
+      <obj_property name="ElementShortName">zero_f</obj_property>
+      <obj_property name="ObjectShortName">zero_f</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/neg_f" type="logic">
+      <obj_property name="ElementShortName">neg_f</obj_property>
+      <obj_property name="ObjectShortName">neg_f</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/ov_f" type="logic">
+      <obj_property name="ElementShortName">ov_f</obj_property>
+      <obj_property name="ObjectShortName">ov_f</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/sov_f" type="logic">
+      <obj_property name="ElementShortName">sov_f</obj_property>
+      <obj_property name="ObjectShortName">sov_f</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/reg_zero" type="logic">
+      <obj_property name="ElementShortName">reg_zero</obj_property>
+      <obj_property name="ObjectShortName">reg_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/reg_neg" type="logic">
+      <obj_property name="ElementShortName">reg_neg</obj_property>
+      <obj_property name="ObjectShortName">reg_neg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/reg_ov" type="logic">
+      <obj_property name="ElementShortName">reg_ov</obj_property>
+      <obj_property name="ObjectShortName">reg_ov</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_k_and_s/uut/datapath_i/reg_sov" type="logic">
+      <obj_property name="ElementShortName">reg_sov</obj_property>
+      <obj_property name="ObjectShortName">reg_sov</obj_property>
    </wvobject>
 </wave_config>

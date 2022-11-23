@@ -39,6 +39,10 @@ logic zero_f;
 logic neg_f;
 logic ov_f;
 logic sov_f;
+logic reg_zero; // registradores das flags
+logic reg_neg;
+logic reg_ov;
+logic reg_sov;
 logic carry_in_ultimo_bit;
 logic [15:0] complemento_bus_b;
 
@@ -56,6 +60,15 @@ always_ff @(posedge clk or negedge rst_n) begin : pc_ctrl
             program_counter <= mem_addr;
         else
             program_counter <= program_counter + 1;
+    end
+end
+
+always_ff @(posedge clk) begin : banco_flags
+    if (flags_reg_enable) begin
+        reg_zero <= zero_f;
+        reg_neg <= neg_f;
+        reg_ov <= ov_f;
+        reg_sov <= sov_f;
     end
 end
 
