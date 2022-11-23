@@ -60,7 +60,7 @@ always_ff @(posedge clk or negedge rst_n) begin : pc_ctrl
 end
 
 always_comb begin : ula_ctrl
-     //assign complemento_bus_b = (~bus_b) + 1;
+   assign  complemento_bus_b = (~bus_b) + 1;
     case(operation)
         2'b01: begin // add
             {carry_in_ultimo_bit, alu_out[14:0]} = bus_a[14:0] + bus_b[14:0];
@@ -68,7 +68,7 @@ always_comb begin : ula_ctrl
             sov_f = ov_f ^carry_in_ultimo_bit;
         end
         2'b10: begin // sub
-    // assign {ov_f, complemento_bus_b} = (~bus_b) + 1; //caso seja 0, unico caso de overflow ele é descartado
+            //{ov_f, complemento_bus_b} = (~bus_b) + 1; //caso seja 0, unico caso de overflow ele é descartado
             {carry_in_ultimo_bit, alu_out[14:0]} = bus_a[14:0] + complemento_bus_b[14:0];
             {ov_f, alu_out[15]} = bus_a[15] + complemento_bus_b[15] + carry_in_ultimo_bit;
             sov_f = ov_f ^carry_in_ultimo_bit;        

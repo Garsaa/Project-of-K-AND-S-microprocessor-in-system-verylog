@@ -77,6 +77,13 @@ always_comb begin : calc_next_state
          end
         
         ESCREVE_REGISTER : begin
+            case(decoded_instruction)
+                I_ADD:  operation = 2'b01;
+                I_SUB:  operation = 2'b10;
+                I_AND:  operation = 2'b11;
+                default: operation = 2'b00;
+            endcase
+            
             write_reg_enable = 1'b1;
             c_sel = 1'b1;
             next_state = BUSCA_INSTR;
@@ -101,7 +108,7 @@ always_comb begin : calc_next_state
                     c_sel = 1'b1;
                     next_state = ESCREVE_REGISTER;
                  end
-                 I_SUB: begin
+                I_SUB: begin
                     operation = 2'b10;
                     c_sel = 1'b1;
                     next_state = ESCREVE_REGISTER;
