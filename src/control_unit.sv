@@ -151,8 +151,31 @@ always_comb begin : calc_next_state
                         next_state = BUSCA_INSTR;
                    end
                    
-                   I_BZERO: begin
-                       if(reg_zero) begin
+                   I_BOV: begin
+                       if(reg_ov) begin
+                            branch = 1'b1;
+                            pc_enable = 1'b1;
+                        end
+                        next_state = BUSCA_INSTR;
+                   end
+                   I_BNZERO: begin
+                       if(!reg_zero) begin
+                            branch = 1'b1;
+                            pc_enable = 1'b1;
+                        end
+                        next_state = BUSCA_INSTR;
+                   end
+                   
+                   I_BNNEG: begin
+                       if(!reg_neg) begin
+                            branch = 1'b1;
+                            pc_enable = 1'b1;
+                        end
+                        next_state = BUSCA_INSTR;
+                   end
+                   
+                   I_BNOV: begin
+                       if(!reg_ov) begin
                             branch = 1'b1;
                             pc_enable = 1'b1;
                         end

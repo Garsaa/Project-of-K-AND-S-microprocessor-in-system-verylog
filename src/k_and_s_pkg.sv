@@ -9,12 +9,12 @@ package k_and_s_pkg;
     I_AND,//ok
     I_OR,//ok
     I_BRANCH,//ok
-    I_BZERO,
-    I_BNZERO,
-    I_BNEG,
-    I_BNNEG,
-    I_BOV,
-    I_BNOV,
+    I_BZERO, //ok
+    I_BNZERO,//Ok
+    I_BNEG,//ok
+    I_BNNEG,//ok
+    I_BOV,//ok
+    I_BNOV,//ok
     I_HALT//ok
 } decoded_instruction_type;  // Decoded instruction in decode
 
