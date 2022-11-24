@@ -181,28 +181,19 @@ always_comb begin : decoder
     endcase
 end
 
-
-//mux do c_bus
 always_comb begin : mux_bus_c
     if(c_sel) bus_c = alu_out;
     else bus_c = data_in;
 end
 
-
-
-//mux do addr_sel
 always_comb begin: mux_addr_sel
   if(addr_sel)
      ram_addr = mem_addr;      
   else
      ram_addr = program_counter;
 end
-
-
-
 //banco de registradores
-always_ff @(posedge clk) begin : register_bank
-   
+always_ff @(posedge clk) begin : register_bank 
    if(write_reg_enable) begin
        case(c_addr)
          2'b00:
@@ -224,8 +215,7 @@ always_ff @(posedge clk) begin : register_bank
             bus_a = R2;
          2'b11:
             bus_a = R3;
-        endcase
-        
+        endcase      
     case(b_addr)
          2'b00:
             bus_b = R0;  
@@ -235,18 +225,9 @@ always_ff @(posedge clk) begin : register_bank
             bus_b = R2;
          2'b11:
             bus_b = R3;  
-     endcase
-   
-  
-   
+     endcase 
 end
-
-  always_comb begin : liga_data_out
+always_comb begin : liga_data_out
      assign data_out = bus_a;
-  end
-
-
-//falta salvar as flags
-
-
+ end
 endmodule : data_path
