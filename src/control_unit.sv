@@ -40,7 +40,6 @@ always_ff @(posedge clk or negedge rst_n) begin
     else
         state = next_state;
 end
-
 always_comb begin : calc_next_state 
     branch = 1'b0; // valores default
     pc_enable = 1'b0;
@@ -58,8 +57,7 @@ always_comb begin : calc_next_state
         end
         REG_INSTR: begin
             ir_enable = 1'b1;
-            pc_enable = 1'b1;
-            
+            pc_enable = 1'b1;           
            next_state = DECODIFICAR;
         end
         LOAD_BUSCA_RAM : begin
@@ -67,15 +65,13 @@ always_comb begin : calc_next_state
             c_sel = 'b0;
             write_reg_enable = 1'b1;
            next_state = BUSCA_INSTR;
-        end
-        
+        end      
         STORE_ESCREVE_RAM : begin
             addr_sel = 1'b1;
             ram_write_enable = 1'b1;
             ir_enable = 1'b0;
             next_state = BUSCA_INSTR;                  
-         end
-        
+         end 
         ESCREVE_REGISTER : begin
             flags_reg_enable = 1'b1;
             case(decoded_instruction)
@@ -83,13 +79,11 @@ always_comb begin : calc_next_state
                 I_SUB:  operation = 2'b10;
                 I_AND:  operation = 2'b11;
                 default: operation = 2'b00;
-            endcase
-            
+            endcase            
             write_reg_enable = 1'b1;
             c_sel = 1'b1;
             next_state = BUSCA_INSTR;
-         end
-        
+        end       
         DECODIFICAR: begin
             next_state = BUSCA_INSTR;
             case(decoded_instruction)        
@@ -132,8 +126,7 @@ always_comb begin : calc_next_state
                    I_BRANCH: begin
                         branch = 1'b1;
                         pc_enable = 1'b1;
-                        next_state = BUSCA_INSTR;
-                        
+                        next_state = BUSCA_INSTR;                      
                  end
                     I_BZERO: begin
                        if(reg_zero) begin
@@ -141,16 +134,14 @@ always_comb begin : calc_next_state
                             pc_enable = 1'b1;
                         end
                         next_state = BUSCA_INSTR;
-                   end
-                   
+                   end                  
                    I_BNEG: begin
                        if(reg_neg) begin
                             branch = 1'b1;
                             pc_enable = 1'b1;
                         end
                         next_state = BUSCA_INSTR;
-                   end
-                   
+                   end                   
                    I_BOV: begin
                        if(reg_ov) begin
                             branch = 1'b1;
@@ -164,33 +155,26 @@ always_comb begin : calc_next_state
                             pc_enable = 1'b1;
                         end
                         next_state = BUSCA_INSTR;
-                   end
-                   
+                   end                 
                    I_BNNEG: begin
                        if(!reg_neg) begin
                             branch = 1'b1;
                             pc_enable = 1'b1;
                         end
                         next_state = BUSCA_INSTR;
-                   end
-                   
+                   end                  
                    I_BNOV: begin
                        if(!reg_ov) begin
                             branch = 1'b1;
                             pc_enable = 1'b1;
                         end
                         next_state = BUSCA_INSTR;
-                   end
-                   
-                   
-                
+                   end   
              endcase
-        end
-        
+        end      
         FIM_PROGRAMA : begin
             halt = 1'b1;
         end
     endcase
 end
-
 endmodule : control_unit
