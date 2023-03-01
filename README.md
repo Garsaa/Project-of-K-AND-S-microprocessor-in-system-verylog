@@ -1,8 +1,5 @@
-## Knob and Switch Simulador em SYSTEM VERILOG
+## Knob and Switch Simulador in SYSTEM VERILOG
 
-Este é um repositório mantido como o projeto inicial para configurar o Xilinx Vivado para o desenvolvimento
-do projeto do simulador do microprocessador K&S em system verilog.
+This is a repository maintained as the initial project to configure Xilinx Vivado for the development of the K&S microprocessor simulator project in system verilog.
 
-Aqui estão todos os arquivos necessários para a simulação e validação dos projetos desenvolvidos pelos alunos
-do curso de Engenharia de Computação da Uergs em Guaíba.
-
+Here are all the necessary files for the simulation and validation of the projects developed by the students of the Computer Engineering course at Uergs in Guaíba.
